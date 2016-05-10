@@ -22,12 +22,12 @@ topicfilter = random.randrange(9999,10005)
 print "Collecting updates from weather server for Zipcode %d" % topicfilter
 socket.setsockopt(zmq.SUBSCRIBE, str(topicfilter))
 
-# Process 5 updates
-total_value = 0
-for update_nbr in range (5):
-  string = socket.recv()
-  topic, messagedata = string.split()
-  total_value += int(messagedata)
-  print topic, messagedata
+while True:
+  total_value = 0
+  for update_nbr in range (2):
+    string = socket.recv()
+    topic, messagedata = string.split()
+    total_value += int(messagedata)
+    print topic, messagedata
 
-print "Average messagedata value for topic '%s' was %dF" % (topicfilter, total_value / update_nbr)
+  print "Average messagedata value for topic '%s' was %dF" % (topicfilter, total_value / update_nbr)
