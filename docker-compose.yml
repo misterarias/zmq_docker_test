@@ -1,0 +1,11 @@
+pub_client:
+  build: ./pub_client
+  expose:
+    - 5556
+  links:
+    - pub_server
+
+pub_server:
+  build: ./pub_server
+  expose:
+    - 5556
